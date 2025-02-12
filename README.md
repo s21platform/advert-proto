@@ -5,7 +5,7 @@
 
 - [advert.proto](#advert-proto)
     - [AdvertText](#-AdvertText)
-    - [GetAdvertIn](#-GetAdvertIn)
+    - [EmptyAdvert](#-EmptyAdvert)
     - [GetAdvertOut](#-GetAdvertOut)
   
     - [AdvertService](#-AdvertService)
@@ -37,15 +37,10 @@
 
 
 
-<a name="-GetAdvertIn"></a>
+<a name="-EmptyAdvert"></a>
 
-### GetAdvertIn
+### EmptyAdvert
 
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| owner_uuid | [string](#string) |  |  |
 
 
 
@@ -80,7 +75,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetAdvert | [.GetAdvertIn](#GetAdvertIn) | [.GetAdvertOut](#GetAdvertOut) |  |
+| GetAdvert | [.EmptyAdvert](#EmptyAdvert) | [.GetAdvertOut](#GetAdvertOut) |  |
 
  
 
