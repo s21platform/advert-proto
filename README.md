@@ -4,10 +4,13 @@
 ## Table of Contents
 
 - [advert.proto](#advert-proto)
+    - [AdvertEmpty](#-AdvertEmpty)
+    - [AdvertText](#-AdvertText)
     - [CreateAdvertIn](#-CreateAdvertIn)
-    - [CreateAdvertOut](#-CreateAdvertOut)
+    - [GetAdvertOut](#-GetAdvertOut)
+    - [UserFilter](#-UserFilter)
   
-    - [ChatService](#-ChatService)
+    - [AdvertService](#-AdvertService)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -20,6 +23,32 @@
 
 
 
+<a name="-AdvertEmpty"></a>
+
+### AdvertEmpty
+
+
+
+
+
+
+
+<a name="-AdvertText"></a>
+
+### AdvertText
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| text_content | [string](#string) |  |  |
+| expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
 <a name="-CreateAdvertIn"></a>
 
 ### CreateAdvertIn
@@ -28,25 +57,39 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| owner_uuid | [string](#string) |  |  |
 | text | [string](#string) |  |  |
-| user | [string](#string) |  |  |
-| expire_date | [string](#string) |  |  |
+| user | [UserFilter](#UserFilter) |  |  |
+| expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
 
 
 
 
 
-<a name="-CreateAdvertOut"></a>
+<a name="-GetAdvertOut"></a>
 
-### CreateAdvertOut
+### GetAdvertOut
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| success | [bool](#bool) |  |  |
+| adverts | [AdvertText](#AdvertText) | repeated |  |
+
+
+
+
+
+
+<a name="-UserFilter"></a>
+
+### UserFilter
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| os | [string](#string) |  |  |
 
 
 
@@ -59,14 +102,15 @@
  
 
 
-<a name="-ChatService"></a>
+<a name="-AdvertService"></a>
 
-### ChatService
+### AdvertService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.CreateAdvertOut](#CreateAdvertOut) |  |
+| GetAdvert | [.AdvertEmpty](#AdvertEmpty) | [.GetAdvertOut](#GetAdvertOut) |  |
+| CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
 
  
 
