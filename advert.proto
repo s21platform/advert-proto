@@ -7,7 +7,6 @@ service ChatService {
 }
 
 message CreateAdvertIn {
-    string owner_uuid = 1;
     string text = 2;
     string user = 3;
     string expire_date = 4;
