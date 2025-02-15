@@ -5,11 +5,11 @@ import "google/protobuf/timestamp.proto";
 option go_package = "./advert-proto";
 
 service AdvertService {
-  rpc GetAdvert(GetAdvertIn) returns (GetAdvertOut){};
-  rpc CreateAdvert(CreateAdvertIn) returns (CreateAdvertOut){};
+  rpc GetAdvert(AdvertEmpty) returns (GetAdvertOut){};
+  rpc CreateAdvert(CreateAdvertIn) returns (AdvertEmpty){};
 }
 
-message GetAdvertIn {}
+message AdvertEmpty {}
 
 message AdvertText {
   string text_content = 1;
@@ -29,5 +29,3 @@ message CreateAdvertIn {
   UserFilter user = 2;
   google.protobuf.Timestamp expired_at = 3;
 }
-
-message CreateAdvertOut {}

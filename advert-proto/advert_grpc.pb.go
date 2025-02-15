@@ -27,8 +27,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdvertServiceClient interface {
-	GetAdvert(ctx context.Context, in *GetAdvertIn, opts ...grpc.CallOption) (*GetAdvertOut, error)
-	CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*CreateAdvertOut, error)
+	GetAdvert(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertOut, error)
+	CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
 }
 
 type advertServiceClient struct {
@@ -39,7 +39,7 @@ func NewAdvertServiceClient(cc grpc.ClientConnInterface) AdvertServiceClient {
 	return &advertServiceClient{cc}
 }
 
-func (c *advertServiceClient) GetAdvert(ctx context.Context, in *GetAdvertIn, opts ...grpc.CallOption) (*GetAdvertOut, error) {
+func (c *advertServiceClient) GetAdvert(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAdvertOut)
 	err := c.cc.Invoke(ctx, AdvertService_GetAdvert_FullMethodName, in, out, cOpts...)
@@ -49,9 +49,9 @@ func (c *advertServiceClient) GetAdvert(ctx context.Context, in *GetAdvertIn, op
 	return out, nil
 }
 
-func (c *advertServiceClient) CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*CreateAdvertOut, error) {
+func (c *advertServiceClient) CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateAdvertOut)
+	out := new(AdvertEmpty)
 	err := c.cc.Invoke(ctx, AdvertService_CreateAdvert_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -63,8 +63,8 @@ func (c *advertServiceClient) CreateAdvert(ctx context.Context, in *CreateAdvert
 // All implementations must embed UnimplementedAdvertServiceServer
 // for forward compatibility.
 type AdvertServiceServer interface {
-	GetAdvert(context.Context, *GetAdvertIn) (*GetAdvertOut, error)
-	CreateAdvert(context.Context, *CreateAdvertIn) (*CreateAdvertOut, error)
+	GetAdvert(context.Context, *AdvertEmpty) (*GetAdvertOut, error)
+	CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error)
 	mustEmbedUnimplementedAdvertServiceServer()
 }
 
@@ -75,10 +75,10 @@ type AdvertServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAdvertServiceServer struct{}
 
-func (UnimplementedAdvertServiceServer) GetAdvert(context.Context, *GetAdvertIn) (*GetAdvertOut, error) {
+func (UnimplementedAdvertServiceServer) GetAdvert(context.Context, *AdvertEmpty) (*GetAdvertOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAdvert not implemented")
 }
-func (UnimplementedAdvertServiceServer) CreateAdvert(context.Context, *CreateAdvertIn) (*CreateAdvertOut, error) {
+func (UnimplementedAdvertServiceServer) CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAdvert not implemented")
 }
 func (UnimplementedAdvertServiceServer) mustEmbedUnimplementedAdvertServiceServer() {}
@@ -103,7 +103,7 @@ func RegisterAdvertServiceServer(s grpc.ServiceRegistrar, srv AdvertServiceServe
 }
 
 func _AdvertService_GetAdvert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAdvertIn)
+	in := new(AdvertEmpty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -115,7 +115,7 @@ func _AdvertService_GetAdvert_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: AdvertService_GetAdvert_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdvertServiceServer).GetAdvert(ctx, req.(*GetAdvertIn))
+		return srv.(AdvertServiceServer).GetAdvert(ctx, req.(*AdvertEmpty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

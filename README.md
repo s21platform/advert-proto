@@ -4,10 +4,9 @@
 ## Table of Contents
 
 - [advert.proto](#advert-proto)
+    - [AdvertEmpty](#-AdvertEmpty)
     - [AdvertText](#-AdvertText)
     - [CreateAdvertIn](#-CreateAdvertIn)
-    - [CreateAdvertOut](#-CreateAdvertOut)
-    - [GetAdvertIn](#-GetAdvertIn)
     - [GetAdvertOut](#-GetAdvertOut)
     - [UserFilter](#-UserFilter)
   
@@ -21,6 +20,16 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## advert.proto
+
+
+
+<a name="-AdvertEmpty"></a>
+
+### AdvertEmpty
+
+
+
+
 
 
 
@@ -51,26 +60,6 @@
 | text | [string](#string) |  |  |
 | user | [UserFilter](#UserFilter) |  |  |
 | expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
-
-
-
-
-
-
-<a name="-CreateAdvertOut"></a>
-
-### CreateAdvertOut
-
-
-
-
-
-
-
-<a name="-GetAdvertIn"></a>
-
-### GetAdvertIn
-
 
 
 
@@ -120,8 +109,8 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetAdvert | [.GetAdvertIn](#GetAdvertIn) | [.GetAdvertOut](#GetAdvertOut) |  |
-| CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.CreateAdvertOut](#CreateAdvertOut) |  |
+| GetAdvert | [.AdvertEmpty](#AdvertEmpty) | [.GetAdvertOut](#GetAdvertOut) |  |
+| CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
 
  
 
