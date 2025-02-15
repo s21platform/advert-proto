@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "./advert-proto";
 
 service ChatService {
@@ -9,10 +11,9 @@ service ChatService {
 message CreateAdvertIn {
     string text = 2;
     string user = 3;
-    string expire_date = 4;
+    google.protobuf.Timestamp expire_date = 4;
 }
 
 message CreateAdvertOut {
-    bool success = 1;
 }
 
