@@ -1,6 +1,6 @@
 module github.com/s21platform/advert-proto
 
-go 1.23.5
+go 1.22.8
 
 require (
 	google.golang.org/grpc v1.70.0
