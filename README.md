@@ -5,8 +5,11 @@
 
 - [advert.proto](#advert-proto)
     - [AdvertText](#-AdvertText)
+    - [CreateAdvertIn](#-CreateAdvertIn)
+    - [CreateAdvertOut](#-CreateAdvertOut)
     - [EmptyAdvert](#-EmptyAdvert)
     - [GetAdvertOut](#-GetAdvertOut)
+    - [UserFilter](#-UserFilter)
   
     - [AdvertService](#-AdvertService)
   
@@ -37,6 +40,33 @@
 
 
 
+<a name="-CreateAdvertIn"></a>
+
+### CreateAdvertIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| text | [string](#string) |  |  |
+| user | [UserFilter](#UserFilter) |  |  |
+| expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="-CreateAdvertOut"></a>
+
+### CreateAdvertOut
+
+
+
+
+
+
+
 <a name="-EmptyAdvert"></a>
 
 ### EmptyAdvert
@@ -61,6 +91,21 @@
 
 
 
+
+<a name="-UserFilter"></a>
+
+### UserFilter
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| os | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -76,6 +121,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | GetAdvert | [.EmptyAdvert](#EmptyAdvert) | [.GetAdvertOut](#GetAdvertOut) |  |
+| CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.CreateAdvertOut](#CreateAdvertOut) |  |
 
  
 
