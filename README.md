@@ -7,7 +7,7 @@
     - [AdvertText](#-AdvertText)
     - [CreateAdvertIn](#-CreateAdvertIn)
     - [CreateAdvertOut](#-CreateAdvertOut)
-    - [EmptyAdvert](#-EmptyAdvert)
+    - [GetAdvertIn](#-GetAdvertIn)
     - [GetAdvertOut](#-GetAdvertOut)
     - [UserFilter](#-UserFilter)
   
@@ -67,9 +67,9 @@
 
 
 
-<a name="-EmptyAdvert"></a>
+<a name="-GetAdvertIn"></a>
 
-### EmptyAdvert
+### GetAdvertIn
 
 
 
@@ -120,7 +120,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetAdvert | [.EmptyAdvert](#EmptyAdvert) | [.GetAdvertOut](#GetAdvertOut) |  |
+| GetAdvert | [.GetAdvertIn](#GetAdvertIn) | [.GetAdvertOut](#GetAdvertOut) |  |
 | CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.CreateAdvertOut](#CreateAdvertOut) |  |
 
  
