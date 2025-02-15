@@ -5,13 +5,17 @@ import "google/protobuf/timestamp.proto";
 option go_package = "./advert-proto";
 
 service ChatService {
-  rpc CreateAdvert(CreateAdvertIn) returns (CreateAdvertOut){};
+    rpc CreateAdvert(CreateAdvertIn) returns (CreateAdvertOut){};
+}
+
+message UserFilter {
+    string os = 1;
 }
 
 message CreateAdvertIn {
-    string text = 2;
-    string user = 3;
-    google.protobuf.Timestamp expire_date = 4;
+    string text = 1;
+    UserFilter user = 2;
+    google.protobuf.Timestamp expired_at = 3;
 }
 
 message CreateAdvertOut {
