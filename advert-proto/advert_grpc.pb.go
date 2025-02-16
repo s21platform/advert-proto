@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AdvertService_GetAdvert_FullMethodName    = "/AdvertService/GetAdvert"
+	AdvertService_GetAdverts_FullMethodName   = "/AdvertService/GetAdverts"
 	AdvertService_CreateAdvert_FullMethodName = "/AdvertService/CreateAdvert"
 )
 
@@ -27,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdvertServiceClient interface {
-	GetAdvert(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertOut, error)
+	GetAdverts(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertsOut, error)
 	CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
 }
 
@@ -39,10 +39,10 @@ func NewAdvertServiceClient(cc grpc.ClientConnInterface) AdvertServiceClient {
 	return &advertServiceClient{cc}
 }
 
-func (c *advertServiceClient) GetAdvert(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertOut, error) {
+func (c *advertServiceClient) GetAdverts(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertsOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAdvertOut)
-	err := c.cc.Invoke(ctx, AdvertService_GetAdvert_FullMethodName, in, out, cOpts...)
+	out := new(GetAdvertsOut)
+	err := c.cc.Invoke(ctx, AdvertService_GetAdverts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func (c *advertServiceClient) CreateAdvert(ctx context.Context, in *CreateAdvert
 // All implementations must embed UnimplementedAdvertServiceServer
 // for forward compatibility.
 type AdvertServiceServer interface {
-	GetAdvert(context.Context, *AdvertEmpty) (*GetAdvertOut, error)
+	GetAdverts(context.Context, *AdvertEmpty) (*GetAdvertsOut, error)
 	CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error)
 	mustEmbedUnimplementedAdvertServiceServer()
 }
@@ -75,8 +75,8 @@ type AdvertServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAdvertServiceServer struct{}
 
-func (UnimplementedAdvertServiceServer) GetAdvert(context.Context, *AdvertEmpty) (*GetAdvertOut, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAdvert not implemented")
+func (UnimplementedAdvertServiceServer) GetAdverts(context.Context, *AdvertEmpty) (*GetAdvertsOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAdverts not implemented")
 }
 func (UnimplementedAdvertServiceServer) CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAdvert not implemented")
@@ -102,20 +102,20 @@ func RegisterAdvertServiceServer(s grpc.ServiceRegistrar, srv AdvertServiceServe
 	s.RegisterService(&AdvertService_ServiceDesc, srv)
 }
 
-func _AdvertService_GetAdvert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _AdvertService_GetAdverts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AdvertEmpty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdvertServiceServer).GetAdvert(ctx, in)
+		return srv.(AdvertServiceServer).GetAdverts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AdvertService_GetAdvert_FullMethodName,
+		FullMethod: AdvertService_GetAdverts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdvertServiceServer).GetAdvert(ctx, req.(*AdvertEmpty))
+		return srv.(AdvertServiceServer).GetAdverts(ctx, req.(*AdvertEmpty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -146,8 +146,8 @@ var AdvertService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*AdvertServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetAdvert",
-			Handler:    _AdvertService_GetAdvert_Handler,
+			MethodName: "GetAdverts",
+			Handler:    _AdvertService_GetAdverts_Handler,
 		},
 		{
 			MethodName: "CreateAdvert",
