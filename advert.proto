@@ -21,7 +21,7 @@ message GetAdvertsOut {
 }
 
 message UserFilter {
-  string os = 1;
+  int64 os = 1;
 }
 
 message CreateAdvertIn {
