@@ -89,7 +89,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| os | [string](#string) |  |  |
+| os | [int64](#int64) | repeated |  |
 
 
 
