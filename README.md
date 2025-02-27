@@ -6,6 +6,7 @@
 - [advert.proto](#advert-proto)
     - [AdvertEmpty](#-AdvertEmpty)
     - [AdvertText](#-AdvertText)
+    - [CancelAdvertIn](#-CancelAdvertIn)
     - [CreateAdvertIn](#-CreateAdvertIn)
     - [GetAdvertsOut](#-GetAdvertsOut)
     - [UserFilter](#-UserFilter)
@@ -43,6 +44,21 @@
 | ----- | ---- | ----- | ----------- |
 | text_content | [string](#string) |  |  |
 | expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="-CancelAdvertIn"></a>
+
+### CancelAdvertIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
 
 
 
@@ -111,6 +127,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | GetAdverts | [.AdvertEmpty](#AdvertEmpty) | [.GetAdvertsOut](#GetAdvertsOut) |  |
 | CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
+| CancelAdvert | [.CancelAdvertIn](#CancelAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
 
  
 

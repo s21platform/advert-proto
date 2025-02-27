@@ -7,6 +7,7 @@ option go_package = "./advert-proto";
 service AdvertService {
   rpc GetAdverts(AdvertEmpty) returns (GetAdvertsOut){};
   rpc CreateAdvert(CreateAdvertIn) returns (AdvertEmpty){};
+  rpc CancelAdvert(CancelAdvertIn) returns (AdvertEmpty){};
 }
 
 message AdvertEmpty {}
@@ -28,4 +29,8 @@ message CreateAdvertIn {
   string text = 1;
   UserFilter user = 2;
   google.protobuf.Timestamp expired_at = 3;
+}
+
+message CancelAdvertIn {
+  int64 id = 1;
 }
