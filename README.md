@@ -7,7 +7,6 @@
     - [AdvertEmpty](#-AdvertEmpty)
     - [AdvertText](#-AdvertText)
     - [CancelAdvertIn](#-CancelAdvertIn)
-    - [CancelAdvertOut](#-CancelAdvertOut)
     - [CreateAdvertIn](#-CreateAdvertIn)
     - [GetAdvertsOut](#-GetAdvertsOut)
     - [UserFilter](#-UserFilter)
@@ -60,21 +59,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | id | [int64](#int64) |  |  |
-
-
-
-
-
-
-<a name="-CancelAdvertOut"></a>
-
-### CancelAdvertOut
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| advert_canceled | [bool](#bool) |  |  |
 
 
 
@@ -143,7 +127,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | GetAdverts | [.AdvertEmpty](#AdvertEmpty) | [.GetAdvertsOut](#GetAdvertsOut) |  |
 | CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
-| CancelAdvert | [.CancelAdvertIn](#CancelAdvertIn) | [.CancelAdvertOut](#CancelAdvertOut) |  |
+| CancelAdvert | [.CancelAdvertIn](#CancelAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
 
  
 

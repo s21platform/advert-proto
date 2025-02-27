@@ -7,7 +7,7 @@ option go_package = "./advert-proto";
 service AdvertService {
   rpc GetAdverts(AdvertEmpty) returns (GetAdvertsOut){};
   rpc CreateAdvert(CreateAdvertIn) returns (AdvertEmpty){};
-  rpc CancelAdvert(CancelAdvertIn) returns (CancelAdvertOut){};
+  rpc CancelAdvert(CancelAdvertIn) returns (AdvertEmpty){};
 }
 
 message AdvertEmpty {}
@@ -33,8 +33,4 @@ message CreateAdvertIn {
 
 message CancelAdvertIn {
   int64 id = 1;
-}
-
-message CancelAdvertOut {
-  bool advert_canceled = 1;
 }

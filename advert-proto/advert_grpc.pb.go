@@ -30,7 +30,7 @@ const (
 type AdvertServiceClient interface {
 	GetAdverts(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertsOut, error)
 	CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
-	CancelAdvert(ctx context.Context, in *CancelAdvertIn, opts ...grpc.CallOption) (*CancelAdvertOut, error)
+	CancelAdvert(ctx context.Context, in *CancelAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
 }
 
 type advertServiceClient struct {
@@ -61,9 +61,9 @@ func (c *advertServiceClient) CreateAdvert(ctx context.Context, in *CreateAdvert
 	return out, nil
 }
 
-func (c *advertServiceClient) CancelAdvert(ctx context.Context, in *CancelAdvertIn, opts ...grpc.CallOption) (*CancelAdvertOut, error) {
+func (c *advertServiceClient) CancelAdvert(ctx context.Context, in *CancelAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CancelAdvertOut)
+	out := new(AdvertEmpty)
 	err := c.cc.Invoke(ctx, AdvertService_CancelAdvert_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -77,7 +77,7 @@ func (c *advertServiceClient) CancelAdvert(ctx context.Context, in *CancelAdvert
 type AdvertServiceServer interface {
 	GetAdverts(context.Context, *AdvertEmpty) (*GetAdvertsOut, error)
 	CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error)
-	CancelAdvert(context.Context, *CancelAdvertIn) (*CancelAdvertOut, error)
+	CancelAdvert(context.Context, *CancelAdvertIn) (*AdvertEmpty, error)
 	mustEmbedUnimplementedAdvertServiceServer()
 }
 
@@ -94,7 +94,7 @@ func (UnimplementedAdvertServiceServer) GetAdverts(context.Context, *AdvertEmpty
 func (UnimplementedAdvertServiceServer) CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateAdvert not implemented")
 }
-func (UnimplementedAdvertServiceServer) CancelAdvert(context.Context, *CancelAdvertIn) (*CancelAdvertOut, error) {
+func (UnimplementedAdvertServiceServer) CancelAdvert(context.Context, *CancelAdvertIn) (*AdvertEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelAdvert not implemented")
 }
 func (UnimplementedAdvertServiceServer) mustEmbedUnimplementedAdvertServiceServer() {}
