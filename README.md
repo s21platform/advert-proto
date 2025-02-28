@@ -9,6 +9,7 @@
     - [CancelAdvertIn](#-CancelAdvertIn)
     - [CreateAdvertIn](#-CreateAdvertIn)
     - [GetAdvertsOut](#-GetAdvertsOut)
+    - [RestoreAdvertIn](#-RestoreAdvertIn)
     - [UserFilter](#-UserFilter)
   
     - [AdvertService](#-AdvertService)
@@ -97,6 +98,21 @@
 
 
 
+<a name="-RestoreAdvertIn"></a>
+
+### RestoreAdvertIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
+
+
+
+
+
+
 <a name="-UserFilter"></a>
 
 ### UserFilter
@@ -128,6 +144,7 @@
 | GetAdverts | [.AdvertEmpty](#AdvertEmpty) | [.GetAdvertsOut](#GetAdvertsOut) |  |
 | CreateAdvert | [.CreateAdvertIn](#CreateAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
 | CancelAdvert | [.CancelAdvertIn](#CancelAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
+| RestoreAdvert | [.RestoreAdvertIn](#RestoreAdvertIn) | [.AdvertEmpty](#AdvertEmpty) |  |
 
  
 

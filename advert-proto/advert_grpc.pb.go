@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AdvertService_GetAdverts_FullMethodName   = "/AdvertService/GetAdverts"
-	AdvertService_CreateAdvert_FullMethodName = "/AdvertService/CreateAdvert"
-	AdvertService_CancelAdvert_FullMethodName = "/AdvertService/CancelAdvert"
+	AdvertService_GetAdverts_FullMethodName    = "/AdvertService/GetAdverts"
+	AdvertService_CreateAdvert_FullMethodName  = "/AdvertService/CreateAdvert"
+	AdvertService_CancelAdvert_FullMethodName  = "/AdvertService/CancelAdvert"
+	AdvertService_RestoreAdvert_FullMethodName = "/AdvertService/RestoreAdvert"
 )
 
 // AdvertServiceClient is the client API for AdvertService service.
@@ -31,6 +32,7 @@ type AdvertServiceClient interface {
 	GetAdverts(ctx context.Context, in *AdvertEmpty, opts ...grpc.CallOption) (*GetAdvertsOut, error)
 	CreateAdvert(ctx context.Context, in *CreateAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
 	CancelAdvert(ctx context.Context, in *CancelAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
+	RestoreAdvert(ctx context.Context, in *RestoreAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error)
 }
 
 type advertServiceClient struct {
@@ -71,6 +73,16 @@ func (c *advertServiceClient) CancelAdvert(ctx context.Context, in *CancelAdvert
 	return out, nil
 }
 
+func (c *advertServiceClient) RestoreAdvert(ctx context.Context, in *RestoreAdvertIn, opts ...grpc.CallOption) (*AdvertEmpty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AdvertEmpty)
+	err := c.cc.Invoke(ctx, AdvertService_RestoreAdvert_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AdvertServiceServer is the server API for AdvertService service.
 // All implementations must embed UnimplementedAdvertServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type AdvertServiceServer interface {
 	GetAdverts(context.Context, *AdvertEmpty) (*GetAdvertsOut, error)
 	CreateAdvert(context.Context, *CreateAdvertIn) (*AdvertEmpty, error)
 	CancelAdvert(context.Context, *CancelAdvertIn) (*AdvertEmpty, error)
+	RestoreAdvert(context.Context, *RestoreAdvertIn) (*AdvertEmpty, error)
 	mustEmbedUnimplementedAdvertServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedAdvertServiceServer) CreateAdvert(context.Context, *CreateAdv
 }
 func (UnimplementedAdvertServiceServer) CancelAdvert(context.Context, *CancelAdvertIn) (*AdvertEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelAdvert not implemented")
+}
+func (UnimplementedAdvertServiceServer) RestoreAdvert(context.Context, *RestoreAdvertIn) (*AdvertEmpty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestoreAdvert not implemented")
 }
 func (UnimplementedAdvertServiceServer) mustEmbedUnimplementedAdvertServiceServer() {}
 func (UnimplementedAdvertServiceServer) testEmbeddedByValue()                       {}
@@ -172,6 +188,24 @@ func _AdvertService_CancelAdvert_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AdvertService_RestoreAdvert_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestoreAdvertIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AdvertServiceServer).RestoreAdvert(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AdvertService_RestoreAdvert_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AdvertServiceServer).RestoreAdvert(ctx, req.(*RestoreAdvertIn))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AdvertService_ServiceDesc is the grpc.ServiceDesc for AdvertService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var AdvertService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CancelAdvert",
 			Handler:    _AdvertService_CancelAdvert_Handler,
+		},
+		{
+			MethodName: "RestoreAdvert",
+			Handler:    _AdvertService_RestoreAdvert_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
