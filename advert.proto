@@ -8,6 +8,7 @@ service AdvertService {
   rpc GetAdverts(AdvertEmpty) returns (GetAdvertsOut){};
   rpc CreateAdvert(CreateAdvertIn) returns (AdvertEmpty){};
   rpc CancelAdvert(CancelAdvertIn) returns (AdvertEmpty){};
+  rpc RestoreAdvert(RestoreAdvertIn) returns (AdvertEmpty){};
 }
 
 message AdvertEmpty {}
@@ -32,5 +33,9 @@ message CreateAdvertIn {
 }
 
 message CancelAdvertIn {
+  int64 id = 1;
+}
+
+message RestoreAdvertIn {
   int64 id = 1;
 }
