@@ -1,0 +1,50 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: Advert-v0
+  description: Сервис рекламных объявлений
+  annotations:
+    github.com/project-slug: s21platform/advert-proto # Укажите правильный репозиторий
+  #    backstage.io/techdocs-ref: dir:.  # Если планируете использовать TechDocs
+  tags:
+    - proto
+spec:
+  type: grpc
+  lifecycle: production
+  owner: advert-service-team  # GitHub-логин ответственного
+  definition: |
+    service AdvertService {
+      rpc GetAdverts(AdvertEmpty) returns (GetAdvertsOut){};
+      rpc CreateAdvert(CreateAdvertIn) returns (AdvertEmpty){};
+      rpc CancelAdvert(CancelAdvertIn) returns (AdvertEmpty){};
+      rpc RestoreAdvert(RestoreAdvertIn) returns (AdvertEmpty){};
+    }
+
+    message AdvertEmpty {}
+
+    message AdvertText {
+      string text_content = 1;
+      google.protobuf.Timestamp expired_at = 2;
+    }
+
+    message GetAdvertsOut {
+      repeated AdvertText adverts = 1;
+    }
+
+    message UserFilter {
+      repeated int64 os = 1;
+    }
+
+    message CreateAdvertIn {
+      string text = 1;
+      UserFilter user = 2;
+      google.protobuf.Timestamp expired_at = 3;
+    }
+
+    message CancelAdvertIn {
+      int64 id = 1;
+    }
+
+    message RestoreAdvertIn {
+      int64 id = 1;
+    }
