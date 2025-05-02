@@ -43,6 +43,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| title | [string](#string) |  |  |
 | text_content | [string](#string) |  |  |
 | expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
@@ -74,7 +75,8 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| text | [string](#string) |  |  |
+| title | [string](#string) |  |  |
+| text_content | [string](#string) |  |  |
 | user | [UserFilter](#UserFilter) |  |  |
 | expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
 
