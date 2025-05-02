@@ -1,4 +1,4 @@
-protoc  --go_out=./  \
+protoc  --go_out=./ \
         --go-grpc_out=./ \
         advert.proto
 
