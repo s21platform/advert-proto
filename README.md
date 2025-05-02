@@ -8,6 +8,7 @@
     - [AdvertText](#-AdvertText)
     - [CancelAdvertIn](#-CancelAdvertIn)
     - [CreateAdvertIn](#-CreateAdvertIn)
+    - [GetAdvertOut](#-GetAdvertOut)
     - [GetAdvertsOut](#-GetAdvertsOut)
     - [RestoreAdvertIn](#-RestoreAdvertIn)
     - [UserFilter](#-UserFilter)
@@ -79,6 +80,21 @@
 | text_content | [string](#string) |  |  |
 | user | [UserFilter](#UserFilter) |  |  |
 | expired_at | [google.protobuf.Timestamp](#google-protobuf-Timestamp) |  |  |
+
+
+
+
+
+
+<a name="-GetAdvertOut"></a>
+
+### GetAdvertOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| adverts | [AdvertText](#AdvertText) |  |  |
 
 
 

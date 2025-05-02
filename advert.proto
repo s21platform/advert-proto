@@ -19,6 +19,10 @@ message AdvertText {
   google.protobuf.Timestamp expired_at = 3;
 }
 
+message GetAdvertOut {
+  AdvertText adverts = 1;
+}
+
 message GetAdvertsOut {
   repeated AdvertText adverts = 1;
 }
